@@ -10,50 +10,50 @@ keys = {
 
 
 Citizen.CreateThread(function()
-	WarMenu.CreateMenu('DrugMenu', 'Drug Store')
-	WarMenu.CreateSubMenu('Health', 'DrugMenu', 'Health')
-	WarMenu.CreateSubMenu('Pick Me Up', 'DrugMenu', 'Pick Me Up')
-	WarMenu.CreateSubMenu('Mixtures', 'DrugMenu', 'Mixtures')
-	WarMenu.CreateSubMenu('Poisons & Solutions', 'DrugMenu', 'Poisons & Solutions')
-	WarMenu.SetSubTitle('DrugMenu', 'Drug list')
+	WarMenu.CreateMenu('GenStoreMenu', 'General Store')
+	WarMenu.CreateSubMenu('Food', 'GenStoreMenu', 'Food')
+	WarMenu.CreateSubMenu('Drink', 'GenStoreMenu', 'Drink')
+	WarMenu.CreateSubMenu('Farming', 'GenStoreMenu', 'Farming')
+	WarMenu.CreateSubMenu('Misc', 'GenStoreMenu', 'Misc')
+	WarMenu.SetSubTitle('GenStoreMenu', 'Products')
  	while true do
 		Citizen.Wait(0)
 		local playerPed = PlayerPedId()
 		local coords = GetEntityCoords(playerPed)
-		if WarMenu.IsMenuOpened('DrugMenu') then
-			    if WarMenu.MenuButton('Health', 'Health') then end
-				if WarMenu.MenuButton('Pick Me Up', 'Pick Me Up') then end
-				if WarMenu.MenuButton('Mixtures', 'Mixtures') then end
-				if WarMenu.MenuButton('Poisons & Solutions', 'Poisons & Solutions') then end
+		if WarMenu.IsMenuOpened('GenStoreMenu') then
+			    if WarMenu.MenuButton('Food', 'Food') then end
+				if WarMenu.MenuButton('Drink', 'Drink') then end
+				if WarMenu.MenuButton('Farming', 'Farming') then end
+				if WarMenu.MenuButton('Misc', 'Misc') then end
 				WarMenu.Display()
-				elseif WarMenu.IsMenuOpened('Health') then 
+				elseif WarMenu.IsMenuOpened('Food') then 
 				if WarMenu.Button('Bandage 18$ level require [0]') then
-						TriggerServerEvent('mh:buydrug', 18, 'Bandage', 0)
+						TriggerServerEvent('mh:buygeneral', 18, 'Bandage', 0)
 					elseif WarMenu.Button('Health Kit 25$ level require [0]') then
-						TriggerServerEvent('mh:buydrug', 25, 'Health Kit', 0)
+						TriggerServerEvent('mh:buygeneral', 25, 'Health Kit', 0)
 					elseif WarMenu.Button('Dr. Batty Asthma Cigarettes 25$ level require [0]') then
-						TriggerServerEvent('mh:buydrug', 25, 'Asthma Cigarettes', 0)
+						TriggerServerEvent('mh:buygeneral', 25, 'Asthma Cigarettes', 0)
 				end
 				WarMenu.Display()
-				elseif WarMenu.IsMenuOpened('Pick Me Up') then
+				elseif WarMenu.IsMenuOpened('Drink') then
 				if WarMenu.Button('Cocaine Gum 60 $ level require [1]') then
-						TriggerServerEvent('mh:buydrug', 60, 'Cocaine Gum', 1)
+						TriggerServerEvent('mh:buygeneral', 60, 'Cocaine Gum', 1)
 					elseif WarMenu.Button('Dr. Nagai Meth 120$ level require [10]') then
-						TriggerServerEvent('mh:buydrug', 120, 'Meth', 10)
+						TriggerServerEvent('mh:buygeneral', 120, 'Meth', 10)
 				end
 				WarMenu.Display()
-				elseif WarMenu.IsMenuOpened('Mixtures') then 
+				elseif WarMenu.IsMenuOpened('Farming') then 
 				if WarMenu.Button('Cod Liver Oil 50$ level require [5]') then
-						TriggerServerEvent('mh:buydrug', 50, 'WEAPON_REVOLVER_DOUBLEACTION', 5)
+						TriggerServerEvent('mh:buygeneral', 50, 'WEAPON_REVOLVER_DOUBLEACTION', 5)
 					elseif WarMenu.Button('Dr Guertins Nerve Syrup 55$ level require [6]') then
-						TriggerServerEvent('mh:buydrug', 55, 'Nerve Syrup', 6)
+						TriggerServerEvent('mh:buygeneral', 55, 'Nerve Syrup', 6)
 					elseif WarMenu.Button('Standard Radium  55$ level require [6]') then
-						TriggerServerEvent('mh:buydrug', 55, 'Standard Radium', 6)
+						TriggerServerEvent('mh:buygeneral', 55, 'Standard Radium', 6)
 				end
 				WarMenu.Display()
-				elseif WarMenu.IsMenuOpened('Poisons & Solutions') then
+				elseif WarMenu.IsMenuOpened('Misc') then
 				if WarMenu.Button('Arsenic 30 $ level require [1]') then
-					TriggerServerEvent('mh:buydrug', 30, 'Arsenic', 1)
+					TriggerServerEvent('mh:buygeneral', 30, 'Arsenic', 1)
 				end
 				WarMenu.Display()
 			end
@@ -66,7 +66,7 @@ Citizen.CreateThread(function()
 			if _distance < 2 then
 				DrawTxt(Config.Shoptext, 0.50, 0.95, 0.6, 0.6, true, 255, 255, 255, 255, true, 10000)
 				if IsControlJustReleased(0, keys['E']) then
-					WarMenu.OpenMenu('DrugMenu')
+					WarMenu.OpenMenu('GenStoreMenu')
 				end
 			end
 

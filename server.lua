@@ -3,8 +3,8 @@ TriggerEvent("redemrp_inventory:getData",function(call)
     data = call
 end)
 
-RegisterServerEvent('mh:buydrug')
-AddEventHandler('mh:buydrug', function(price, item, level)
+RegisterServerEvent('mh:buygeneral')
+AddEventHandler('mh:buygeneral', function(price, item, level)
 	local _item = item
 	local _level = level
 	local _source = source
